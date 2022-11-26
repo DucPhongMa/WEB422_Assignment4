@@ -3,9 +3,28 @@ import Error from 'next/error'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
+import { useAtom } from 'jotai';
+import { favouritesAtom } from '../store';
+import { useState } from 'react';
 
 export default function ArtworkCardDetail(props) {
-    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${props.objectID}`);
+
+    const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
+
+    const [showAdded, setShowAdded] = useState(() => favouritesList.includes(props.objectID) ? true : false);
+
+    const { data, error } = useSWR(props.objectID ? `https://collectionapi.metmuseum.org/public/collection/v1/objects/${props.objectID}` : null);
+
+    function favouritesClicked() {
+        if(showAdded){
+            setFavouritesList(current => current.filter(fav => fav != props.objectID));
+            setShowAdded(false)
+        }
+        else{
+            setFavouritesList(current => [...current, props.objectID]);
+            setShowAdded(true)
+        }
+    }
 
     if(data == null || data == undefined){
         return null
@@ -30,7 +49,9 @@ export default function ArtworkCardDetail(props) {
                             {data?.artistDisplayName && (( <a href={data?.artistWikidata_URL} style={{textDecoration: 'none'}} target="_blank" rel="noreferrer" ><span style={{color: 'black'}}>( </span> <u>wiki</u> <span style={{color: 'black'}}> )</span></a>))}
                             <br />
                             <strong>Credit Line: </strong> {data?.creditLine ? data?.creditLine : 'N\/A'}<br />
-                            <strong>Dimensions: </strong> {data?.dimensions ? data?.dimensions : 'N\/A'}<br />
+                            <strong>Dimensions: </strong> {data?.dimensions ? data?.dimensions : 'N\/A'}<br /><br />
+
+                            <Button variant={showAdded ? 'primary' : 'outline-primary'} onClick={favouritesClicked}>{showAdded ? '+ Favourite (added)' : '+ Favourite'}</Button>
                         </Card.Text>
                        
                     </Card.Body>
