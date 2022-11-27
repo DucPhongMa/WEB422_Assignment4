@@ -10,6 +10,9 @@ import {useState} from 'react';
 import { useAtom } from 'jotai';
 import { searchHistoryAtom } from '../store';
 
+import { addToHistory } from '../lib/userData';
+
+
 export default function MainNav() {
    const router = useRouter()
 
@@ -18,11 +21,11 @@ export default function MainNav() {
 
    const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
        e.preventDefault()
        setIsExpanded(false)
        router.push(`/artwork?title=true&q=${route}`)
-       setSearchHistory(current => [...current, `title=true&q=${route}`]);
+       setSearchHistory(await addToHistory(`title=true&q=${route}`))
        e.target.reset();
        
    }

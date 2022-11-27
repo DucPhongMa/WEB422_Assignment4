@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { searchHistoryAtom } from '../store';
 
+import { addToHistory } from '../lib/userData';
+
 export default function AdvancedSearch() {
 
   const router = useRouter();
@@ -39,7 +41,7 @@ export default function AdvancedSearch() {
     }
   })
 
-  function submitForm(data) {
+  async function submitForm(data) {
     let queryString = "";
     queryString=`${data.searchBy}=true`
     if(data.geoLocation){
@@ -50,7 +52,7 @@ export default function AdvancedSearch() {
     }
     queryString +=`&isOnView=${data.isOnView}&isHighlight=${data.isHighlight}&q=${data.q}`
     router.push(`/artwork?${queryString}`)
-    setSearchHistory(current => [...current, queryString]);
+    setSearchHistory(await addToHistory(queryString))
   }
 
 
