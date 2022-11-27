@@ -46,7 +46,7 @@ export default function AdvancedSearch() {
                     <Card.Body>
                     <Card.Text>
                         <strong>Nothing Here</strong><br />
-                        Try searching for something else.
+                        Try searching for some artwork.
                     </Card.Text>
                     </Card.Body>
                 </Card>
