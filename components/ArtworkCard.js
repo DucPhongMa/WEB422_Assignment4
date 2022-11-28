@@ -19,8 +19,8 @@ export default function ArtworkCard(props) {
             <>
                 <Card style={{ width: '18rem'}}>
                     {data?.primaryImageSmall ? 
-                    <Card.Img variant="top" src={data?.primaryImageSmall} style={{ maxHeight: '210px' }}/> :
-                    <Card.Img variant="top" src="https://via.placeholder.com/375x375.png?text=%5b+Not+Available+%5d" style={{ maxHeight: '210px' }}/>
+                    <Card.Img variant="top" src={data?.primaryImageSmall} style={{ height: '250px', width: '17.9rem', float: "left", objectFit: "cover" }}/> :
+                    <Card.Img variant="top" src="https://via.placeholder.com/375x375.png?text=%5b+Not+Available+%5d" style={{ height: '250px', width: '17.9rem', float: "left", objectFit: "cover" }}/>
                     }
                     
                     <Card.Body style={{lineHeight: '1em'}}>
