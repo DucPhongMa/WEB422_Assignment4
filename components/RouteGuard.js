@@ -9,10 +9,13 @@ import { searchHistoryAtom } from '../store';
 import { getFavourites, getHistory } from '../lib/userData';
 
 
-const PUBLIC_PATHS = ['/login', '/', '/_error', '/register'];
+const PUBLIC_PATHS = ['/login', '/', '/_error', '/register', '/items' ];
 
 export default function RouteGuard(props) {
     const router = useRouter();
+    const { objectID } = router.query;
+    PUBLIC_PATHS.push(`/artwork/${objectID}`)
+
     const [authorized, setAuthorized] = useState(false);
 
     const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);

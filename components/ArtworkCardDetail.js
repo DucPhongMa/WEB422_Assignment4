@@ -9,6 +9,9 @@ import { useState, useEffect } from 'react';
 
 import { addToFavourites, removeFromFavourites } from '../lib/userData';
 
+import { readToken } from '../lib/authenticate';
+
+
 export default function ArtworkCardDetail(props) {
 
     const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
@@ -17,6 +20,8 @@ export default function ArtworkCardDetail(props) {
 
     const { data, error } = useSWR(props.objectID ? `https://collectionapi.metmuseum.org/public/collection/v1/objects/${props.objectID}` : null);
     
+    let token = readToken();
+
     useEffect(()=>{
         setShowAdded(favouritesList?.includes(props.objectID))
     }, [favouritesList])
@@ -57,7 +62,10 @@ export default function ArtworkCardDetail(props) {
                             <strong>Credit Line: </strong> {data?.creditLine ? data?.creditLine : 'N\/A'}<br />
                             <strong>Dimensions: </strong> {data?.dimensions ? data?.dimensions : 'N\/A'}<br /><br />
 
+                            {token && 
                             <Button variant={showAdded ? 'primary' : 'outline-primary'} onClick={favouritesClicked}>{showAdded ? '+ Favourite (added)' : '+ Favourite'}</Button>
+                            }
+                            
                         </Card.Text>
                        
                     </Card.Body>

@@ -43,11 +43,13 @@ export default function MainNav() {
      <>
       <Navbar className="fixed-top navbar-dark bg-dark" bg="light" expand="lg" expanded={isExpanded}>
          <Container>
-            <Navbar.Brand>Duc Phong Ma</Navbar.Brand>
+            {token ? <Navbar.Brand>{token.userName}</Navbar.Brand> : <Navbar.Brand>Museum of Art</Navbar.Brand>}
+            
             <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={(e) => {setIsExpanded(!isExpanded)}}/>
             <Navbar.Collapse id="basic-navbar-nav">
                <Nav className="me-auto">
                   <Link href="/" passHref><Nav.Link onClick={(e) => {setIsExpanded(false)}} active={router.pathname === "/"}>Home</Nav.Link></Link>
+                  <Link href="/items" passHref><Nav.Link onClick={(e) => {setIsExpanded(false)}} active={router.pathname === "/items"}>Exhibitions</Nav.Link></Link>
                   {token 
                   && 
                   <Link href="/search" passHref><Nav.Link onClick={(e) => {setIsExpanded(false)}} active={router.pathname === "/search"}>Advanced Search</Nav.Link></Link>
