@@ -1,6 +1,8 @@
 ## Description
 <b>Museum of Art Website</b>: A functioning backend and frontend website allowing users to search art items and keep track of their favorite list of arts as well as their search history.
 
+<b>Technology used</b>: <i>HTML5, CSS3, Bootstrap 5, JavaScript, NodeJS, Express.js, MongoDB, React.js/Next.js</i>
+
 ## Getting Started
 
 First, clone the repository
@@ -20,7 +22,7 @@ NEXT_PUBLIC_API_URL = "https://sparkling-jade-barracuda.cyclic.app/api/user"
 
 Final, run the development server:
 
-```bash
+```
 npm run dev
 # or
 npm start
