@@ -1,34 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Description
+<b>Museum of Art Website</b>: A functioning backend and frontend website allowing users to search art items and keep track of their favorite list of arts as well as their search history.
 
 ## Getting Started
 
-First, run the development server:
+First, clone the repository
+```
+https://github.com/DucPhongMa/WEB422_Assignment4.git
+```
+
+Second, install npm package
+```
+npm install
+```
+
+Third, create .env file for the variable environment and add the content below to access the backend to fetch the data:
+```
+NEXT_PUBLIC_API_URL = "https://sparkling-jade-barracuda.cyclic.app/api/user"
+```
+
+Final, run the development server:
 
 ```bash
 npm run dev
 # or
-yarn dev
+npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Deployment
+The project is deployed successfully on Vercel
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out (https://web-422-assignment4-qvf8nscoq-ducphongma.vercel.app/) to explore more about the project.
